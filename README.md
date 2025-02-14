@@ -57,6 +57,14 @@ sequenceDiagram
     StandardService ->> StandardEngine: start()
     StandardEngine -->> StandardService: return
     StandardService ->> Connector: start()
+    Connector -->> StandardService: return
+    StandardService -->> StandardServer: return
+    StandardServer -->> Tomcat: return
+    Tomcat -->> Main: return
+```
+
+```mermaid
+sequenceDiagram
     Connector ->> Http11NioProtocol: start()
     Http11NioProtocol ->> NioEndpoint: start()
     NioEndpoint ->> ThreadPoolExecutor: new
@@ -65,10 +73,6 @@ sequenceDiagram
     NioEndpoint ->> AcceptorThread: start()
     NioEndpoint -->> Http11NioProtocol: return
     Http11NioProtocol -->> Connector: return
-    Connector -->> StandardService: return
-    StandardService -->> StandardServer: return
-    StandardServer -->> Tomcat: return
-    Tomcat -->> Main: return
 ```
 
 # リクエスト・レスポンス
