@@ -57,6 +57,7 @@ sequenceDiagram
     StandardService ->> StandardEngine: start()
     StandardEngine -->> StandardService: return
     StandardService ->> Connector: start()
+    Note right of Connector: 下の図に続く
     Connector -->> StandardService: return
     StandardService -->> StandardServer: return
     StandardServer -->> Tomcat: return
